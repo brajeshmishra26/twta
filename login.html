@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .popup {
+            display: none; /* Hide popup by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .popup.active {
+            display: block; /* Show popup when active */
+        }
+
+        .popup-overlay {
+            display: none; /* Hide overlay by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .popup-overlay.active {
+            display: block; /* Show overlay when active */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="php/login.php" method="post">
+            <input type="text" name="aadhr_numer" placeholder="Aadhaar Number" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <a href="#" id="reset-password-link">Forgot Password?</a>
+    </div>
+
+    <!-- Popup Overlay -->
+    <div id="popup-overlay" class="popup-overlay"></div>
+
+    <!-- Reset Password Popup -->
+    <div id="reset-password-popup" class="popup">
+        <form id="reset-password-form" action="reset_password.php" method="post">
+            <input type="text" name="aadhr_numer" placeholder="Enter Aadhaar Number" required>
+            <input type="submit" value="Send OTP">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('reset-password-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('reset-password-popup').classList.add('active');
+            document.getElementById('popup-overlay').classList.add('active');
+        });
+
+        document.getElementById('popup-overlay').addEventListener('click', function() {
+            hidePopup('reset-password-popup');
+        });
+
+        function hidePopup(popupId) {
+            document.getElementById(popupId).classList.remove('active');
+            document.getElementById('popup-overlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

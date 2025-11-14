@@ -1,0 +1,76 @@
+# Environment and Configuration
+.env
+.env.local
+.env.production
+.env.staging
+
+# Database files (MyISAM format)
+*.MYD
+*.MYI
+*.frm
+*.ibd
+
+# Database configuration
+db.opt
+
+# Upload directories
+club/uploads/*
+!club/uploads/.htaccess
+club/docs/*
+!club/docs/.htaccess
+club/images/*
+!club/images/.htaccess
+admin/fbimg/*
+!admin/fbimg/.htaccess
+admin/topicimg/*
+!admin/topicimg/.htaccess
+php/uploads/*
+!php/uploads/.htaccess
+
+# Logs
+error_log
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# PHP temp files
+*.cache
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Test files (auto-cleanup)
+test_*.php
+*_test.php
+setup_*.php
+final_verification.php
+
+# Node modules (if any)
+node_modules/
+npm-debug.log*
+
+# Composer (if used)
+vendor/
+composer.lock
