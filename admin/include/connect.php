@@ -2,10 +2,10 @@
 require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'env.php';
 load_env(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . '.env');
 
-$dbHost = getenv('DB_HOST') ?: 'localhost';
-$dbUser = getenv('DB_USER') ?: 'root';
-$dbPass = getenv('DB_PASS') ?: '';
-$dbName = getenv('DB_NAME') ?: 'twta';
+$dbHost = env_value('DB_HOST', 'localhost');
+$dbUser = env_value('DB_USER', 'root');
+$dbPass = env_value('DB_PASS', '');
+$dbName = env_value('DB_NAME', 'twta');
 
 $link = mysqli_connect($dbHost, $dbUser, $dbPass);
 if (!$link) {
